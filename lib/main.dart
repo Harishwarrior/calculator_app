@@ -165,18 +165,18 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  Widget btn(btntext, Color btnColor) {
+  Widget btn(btnText, Color btnColor) {
     return Container(
       padding: EdgeInsets.only(bottom: 10.0),
       child: FlatButton(
         child: Text(
-          btntext,
+          btnText,
           style: TextStyle(
               fontSize: 28.0, color: Colors.black, fontFamily: 'RobotoMono'),
         ),
         onPressed: () {
           setState(() {
-            textControllerInput.text = textControllerInput.text + btntext;
+            textControllerInput.text = textControllerInput.text + btnText;
           });
         },
         color: btnColor,
@@ -197,6 +197,12 @@ class _MyHomePageState extends State<MyHomePage> {
               ? (textControllerInput.text
                   .substring(0, textControllerInput.text.length - 1))
               : "";
+        },
+        onLongPress: () {
+          setState(() {
+            textControllerInput.text = "";
+            textControllerResult.text = "";
+          });
         },
         color: const Color(0xFFF5F7F9),
         padding: EdgeInsets.all(18.0),
