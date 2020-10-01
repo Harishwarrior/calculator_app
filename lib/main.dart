@@ -47,9 +47,10 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(
           'Calculator',
           style: TextStyle(
-              color: Colors.blueGrey,
-              fontWeight: FontWeight.bold,
-              fontSize: 28.0),
+            color: Colors.blueGrey,
+            fontWeight: FontWeight.bold,
+            fontSize: 28.0,
+          ),
         ),
         backgroundColor: Colors.white,
       ),
@@ -57,10 +58,10 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
-          new Padding(
+          Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
-              child: new TextField(
-                decoration: new InputDecoration.collapsed(
+              child: TextField(
+                decoration: InputDecoration.collapsed(
                     hintText: "0",
                     hintStyle: TextStyle(
                       fontSize: 30,
@@ -72,20 +73,19 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 textAlign: TextAlign.right,
                 controller: textControllerInput,
-                onTap: () =>
-                    FocusScope.of(context).requestFocus(new FocusNode()),
+                onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
               )),
-          new Padding(
+          Padding(
             padding: EdgeInsets.symmetric(horizontal: 10),
             child: TextField(
-              decoration: new InputDecoration.collapsed(
+              decoration: InputDecoration.collapsed(
                   hintText: "Result",
                   // fillColor: Colors.deepPurpleAccent,
                   hintStyle: TextStyle(fontFamily: 'RobotoMono')),
               textInputAction: TextInputAction.none,
               keyboardType: TextInputType.number,
               style: TextStyle(
-                  fontSize: 32,
+                  fontSize: 40,
                   fontFamily: 'RobotoMono',
                   fontWeight: FontWeight.bold
                   // color: Colors.deepPurpleAccent
@@ -93,7 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
               textAlign: TextAlign.right,
               controller: textControllerResult,
               onTap: () {
-                FocusScope.of(context).requestFocus(new FocusNode());
+                FocusScope.of(context).requestFocus(FocusNode());
               },
             ),
           ),
@@ -206,12 +206,12 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  Widget btnAC(btntext, Color btnColor) {
+  Widget btnAC(btnText, Color btnColor) {
     return Container(
       padding: EdgeInsets.only(bottom: 10.0),
       child: FlatButton(
         child: Text(
-          btntext,
+          btnText,
           style: TextStyle(
               fontSize: 28.0, color: Colors.black, fontFamily: 'RobotoMono'),
         ),
@@ -240,9 +240,9 @@ class _MyHomePageState extends State<MyHomePage> {
       callback: () {
         //Calculate everything here
         // Parse expression:
-        Parser p = new Parser();
+        Parser p = Parser();
         // Bind variables:
-        ContextModel cm = new ContextModel();
+        ContextModel cm = ContextModel();
         Expression exp = p.parse(textControllerInput.text);
         setState(() {
           textControllerResult.text =
